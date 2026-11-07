@@ -2,6 +2,8 @@
 
 **Follow a report worker from its source code and Dockerfile to a tested image, registry storage and deployment.**
 
+**What the worker does:** The CareBridge worker automatically retrieves reports about clients, service authorizations, appointments and visits from the CareBridge portal and submits them to the application for import. It manages the saved sign-in, checks for repeated files and records the results so staff can monitor the process.
+
 [Business problem](#the-business-problem) · [Step by step](#step-by-step) · [What was built](#what-was-built) · [Proof](#proof-it-works) · [Commands](docs/COMMANDS.md)
 
 ![Local container-lifecycle reference](docs/images/01-lifecycle.png)
