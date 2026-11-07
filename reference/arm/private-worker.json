@@ -1,0 +1,116 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "imageDigest": {
+      "type": "string",
+      "allowedValues": [
+        "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      ]
+    },
+    "workerEnabled": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "gmailLookupEnabled": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "automaticReconnectEnabled": {
+      "type": "bool",
+      "defaultValue": false
+    },
+    "scheduleEnabled": {
+      "type": "bool",
+      "defaultValue": false
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.App/jobs",
+      "apiVersion": "2025-01-01",
+      "name": "job-example-carebridge",
+      "location": "centralus",
+      "tags": {
+        "environment": "production",
+        "workload": "carebridge",
+        "owner": "example-team",
+        "managed_by": "arm-template",
+        "data_class": "internal",
+        "criticality": "medium",
+        "cost_center": "operations"
+      },
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'id-example-worker')]": {}
+        }
+      },
+      "properties": {
+        "environmentId": "[resourceId('Microsoft.App/managedEnvironments', 'cae-example-workers')]",
+        "workloadProfileName": "Consumption",
+        "configuration": {
+          "triggerType": "[if(parameters('scheduleEnabled'), 'Schedule', 'Manual')]",
+          "replicaTimeout": 840,
+          "replicaRetryLimit": 0,
+          "manualTriggerConfig": "[if(parameters('scheduleEnabled'), json('null'), createObject('parallelism', 1, 'replicaCompletionCount', 1))]",
+          "scheduleTriggerConfig": "[if(parameters('scheduleEnabled'), createObject('cronExpression', '* * * * *', 'parallelism', 1, 'replicaCompletionCount', 1), json('null'))]",
+          "registries": [
+            {
+              "server": "exampleregistry.azurecr.io",
+              "identity": "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'id-example-worker')]"
+            }
+          ]
+        },
+        "template": {
+          "containers": [
+            {
+              "name": "carebridge-sync",
+              "image": "[concat('exampleregistry.azurecr.io/carebridge/importer@', parameters('imageDigest'))]",
+              "command": [
+                "node"
+              ],
+              "args": [
+                "src/worker-cli.mjs"
+              ],
+              "resources": {
+                "cpu": 1,
+                "memory": "2Gi"
+              },
+              "env": [
+                {
+                  "name": "CAREBRIDGE_GMAIL_LOOKUP_ENABLED",
+                  "value": "[toLower(string(parameters('gmailLookupEnabled')))]"
+                },
+                {
+                  "name": "CAREBRIDGE_AUTO_RECONNECT_ENABLED",
+                  "value": "[toLower(string(parameters('automaticReconnectEnabled')))]"
+                },
+                {
+                  "name": "CAREBRIDGE_WORKER_ENABLED",
+                  "value": "[toLower(string(parameters('workerEnabled')))]"
+                },
+                {
+                  "name": "AZURE_CLIENT_ID",
+                  "value": "00000000-0000-4000-8000-000000000001"
+                },
+                {
+                  "name": "CAREBRIDGE_STATE_CONTAINER_URL",
+                  "value": "https://examplestate.blob.core.windows.net/worker-state"
+                },
+                {
+                  "name": "CAREBRIDGE_KEY_VAULT_URL",
+                  "value": "https://example-vault.vault.azure.net"
+                },
+                {
+                  "name": "CAREBRIDGE_API_SCOPE",
+                  "value": "00000000-0000-4000-8000-000000000002/.default"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

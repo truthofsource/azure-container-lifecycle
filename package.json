@@ -1,0 +1,20 @@
+{
+  "name": "carebridge-container-lifecycle",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "demo": "node src/demo.mjs",
+    "browser:smoke": "node src/browser-smoke.mjs"
+  },
+  "dependencies": {
+    "@azure/identity": "^4.14.1",
+    "@azure/keyvault-secrets": "^4.11.2",
+    "@azure/storage-blob": "^12.33.0",
+    "playwright": "1.63.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

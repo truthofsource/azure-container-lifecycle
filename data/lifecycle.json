@@ -1,0 +1,74 @@
+[
+  {
+    "step": 1,
+    "title": "Start with the job",
+    "description": "Define the report-import task and the code that performs it. The Dockerfile packages that code; it is not the beginning of the business solution.",
+    "evidence": "Source code and tests"
+  },
+  {
+    "step": 2,
+    "title": "Record the dependencies",
+    "description": "The package files record the software the worker needs. The lockfile preserves selected versions and download fingerprints.",
+    "evidence": "package.json and package-lock.json"
+  },
+  {
+    "step": 3,
+    "title": "Choose the build inputs",
+    "description": "The Dockerfile describes the image and the build context supplies its files. The ignore file limits this context to package files and source.",
+    "evidence": "Dockerfile and .dockerignore"
+  },
+  {
+    "step": 4,
+    "title": "Build the image",
+    "description": "Docker combines the pinned browser base, installed packages and worker code into an image. It sets the working folder, lower-permission user and default command.",
+    "evidence": "Local image"
+  },
+  {
+    "step": 5,
+    "title": "Verify the packaged runtime",
+    "description": "The final verification stage runs a fictional browser check as the selected image user. This is a build check, not permission to sign into CareBridge.",
+    "evidence": "Synthetic browser result"
+  },
+  {
+    "step": 6,
+    "title": "Review software security",
+    "description": "The platform checks selected software and exact image bytes with its security tooling. Findings and software inventories remain evidence for the release decision.",
+    "evidence": "Trivy reports and software inventory"
+  },
+  {
+    "step": 7,
+    "title": "Store it in the registry",
+    "description": "Azure Container Registry stores the image for later use. A tag is a convenient name, while the registry digest identifies the selected manifest.",
+    "evidence": "Registry image and digest"
+  },
+  {
+    "step": 8,
+    "title": "Check release evidence",
+    "description": "The reviewed signing path binds release-selection evidence to the selected image and accepting source. It does not by itself prove which original build produced that image.",
+    "evidence": "Signed release-selection evidence"
+  },
+  {
+    "step": 9,
+    "title": "Select the deployment image",
+    "description": "The deployment process changes the registered job to the intended image digest. It checks existing settings and identity so an image update does not silently activate other behavior.",
+    "evidence": "Job configuration"
+  },
+  {
+    "step": 10,
+    "title": "Activate work separately",
+    "description": "A job execution creates a running container from the selected image. Scheduling, enable switches and the application work lease separately control whether real report work is allowed.",
+    "evidence": "Execution and work request"
+  },
+  {
+    "step": 11,
+    "title": "Observe useful outcomes",
+    "description": "Logs and saved records show whether a run started, checked unchanged data or committed an import. A started container alone does not establish that a business report was imported.",
+    "evidence": "Execution logs and import records"
+  },
+  {
+    "step": 12,
+    "title": "Keep a recovery path",
+    "description": "Retain the required previous image and reconcile unfinished work before a rollback. Replacing an image does not restore a provider session, database or saved report state.",
+    "evidence": "Previous digest and recovery record"
+  }
+]

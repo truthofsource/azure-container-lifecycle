@@ -1,0 +1,117 @@
+{
+  "reviewedSourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+  "files": [
+    {
+      "sourcePath": "apps/carebridge-importer/src/journal.mjs",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "17c014de99a17bef91d3ff4ff7c7aeb229fe83fea2b75ab025fd65444f1a63c2",
+      "publicPath": "src/journal.mjs",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/src/import-cycle.mjs",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "882ed3fe5680892da25625571a7c86981ee95328df2179010354c38a3a9b5cdc",
+      "publicPath": "src/import-cycle.mjs",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/src/timing.mjs",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "71bdc12c9fa7b160f515a228eb0a966db9950c6f78b2790855e42d33e923ca4d",
+      "publicPath": "src/timing.mjs",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/test/journal.test.mjs",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "ef761b220aae2270d5bcabb61944e7bdef3415634a599ddc94a604fdc12a113a",
+      "publicPath": "test/journal.test.mjs",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/test/import-cycle.test.mjs",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "e7d0fabadc97d5833ecf5141a07725a48106038fa1f72af81817c9d206490653",
+      "publicPath": "test/import-cycle.test.mjs",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/test/timing.test.mjs",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "37a2962575f6a45a6dbb729a208afe5918353e9950701e86571f6fbb8f7da650",
+      "publicPath": "test/timing.test.mjs",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/Dockerfile",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "6055b21bfa4dbc2060e46a7b4e5bf3edc29d9c567708f74292372747f8914ff6",
+      "publicPath": "reference/worker/Dockerfile",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/.dockerignore",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "78fd41df3c0f68bf29b19de2d893669aeb17a970a1806125465ff1c1a83441c6",
+      "publicPath": ".dockerignore",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/src/smoke.mjs",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "7cc4754cea62d0380075059ba2189eac35fe083bb35f40b72ff9e0d5c89159f5",
+      "publicPath": "reference/worker/smoke.mjs",
+      "adaptation": "Unchanged reference only; its full private worker dependency closure is not copied"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/package.json",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "23eb420076f42635fef4954e8c62e3259d6cda86247ac6d8217ea3118efc7d4a",
+      "publicPath": "package.json",
+      "adaptation": "Retain dependency versions; change package name and local example commands"
+    },
+    {
+      "sourcePath": "apps/carebridge-importer/package-lock.json",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "57c9d25a527cc1e24d59e1b433247d2b0abb3a34733836a80c9297f43e5c3925",
+      "publicPath": "package-lock.json",
+      "adaptation": "Only root package name changes; dependency resolutions and integrity values retained"
+    },
+    {
+      "sourcePath": "infra/workloads/carebridge-production/private-worker.json",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "d7816f4142c2086620cf288269b2ce8c04e4bce3bf59518988ea70ecad616f7e",
+      "publicPath": "reference/arm/private-worker.json",
+      "adaptation": "Preserve job structure and controls; replace resource names, identities, endpoints, owner and accepted digests with fictional values; reference only"
+    },
+    {
+      "sourcePath": "infra/modules/network/main.tf",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "aaa8f6582b1de73d23ab7781ff9c9279d107a7bc05d3986d913539a4d6d81d3f",
+      "publicPath": "reference/terraform/network/main.tf",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "infra/modules/network/variables.tf",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "c51b156df2d461ba55d34a18b8c378e535e8b5bfd0f5e1a13919ebb4a6f8e37a",
+      "publicPath": "reference/terraform/network/variables.tf",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "infra/modules/network/outputs.tf",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "4e95f08edec1a193f12edcf48b7e728446350928e60a760b0f6afb083dfdbcd1",
+      "publicPath": "reference/terraform/network/outputs.tf",
+      "adaptation": "Unchanged selected implementation source"
+    },
+    {
+      "sourcePath": "scripts/release_container_image.py",
+      "sourceCommit": "28ffac03a537d3bbd667200c3fee333d880bd3c8",
+      "sourceSha256": "9eae60d8be4920fe68091b81b86b64ede2067a5b389969bd21bc04f030d41d07",
+      "publicPath": "reference/image_selection.py",
+      "adaptation": "Retain four original pure functions; replace trust-module import with the same image-format rule; omit all network/CLI execution"
+    }
+  ]
+}
