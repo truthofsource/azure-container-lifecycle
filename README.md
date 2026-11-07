@@ -2,7 +2,7 @@
 
 **Follow a report worker from its source code and Dockerfile to a tested image, registry storage and deployment.**
 
-**What the worker does:** The CareBridge worker automatically retrieves reports about clients, service authorizations, appointments and visits from the CareBridge portal and submits them to the application for import. It manages the saved sign-in, checks for repeated files and records the results so staff can monitor the process.
+**What the worker does:** A Node.js worker uses **Playwright to control Chromium**, retrieve CareBridge reports about clients, service authorizations, appointments and visits, and submit them to the application for import. It manages the saved sign-in, checks for repeated files and records the results so staff can monitor the process.
 
 [Business problem](#the-business-problem) · [Step by step](#step-by-step) · [What was built](#what-was-built) · [Proof](#proof-it-works) · [Commands](docs/COMMANDS.md)
 
@@ -22,12 +22,27 @@ This case study follows the actual CareBridge worker's container design and rele
 
 An **image** is the packaged software. A **container** is a running copy of that image, and **Azure Container Registry** is the service that stores images for deployment.
 
+## Tools Used and What They Do
+
+| Tool or service | What it does | Where it fits |
+| --- | --- | --- |
+| Node.js and Playwright | Run the report worker and control its browser actions. | Actual worker; selected code and fictional checks are included. |
+| Chromium | Open the provider pages used for sign-in and report downloads. | Browser packaged with the worker; no live provider session in the demo. |
+| Docker and BuildKit | Build the Linux image and run its verification stage. | Build tools; native-runtime acceptance is separate from an image build. |
+| GitHub Actions | Coordinate the platform build and checks. | The public workflow is manual-only and does not publish to Azure. |
+| Azure Container Registry | Store the image selected by its immutable digest. | Actual platform registry; no registry credentials in this reference. |
+| Azure Container Apps Jobs | Execute the deployed report worker. | Actual job is ARM-defined; publication and execution are separate decisions. |
+| Terraform | Demonstrate a related job and network configuration. | Public job root is a default-Off teaching equivalent, not the live job owner. |
+| Trivy | Review known software weaknesses in selected image bytes. | Separate security check; a local browser pass is not a vulnerability scan. |
+
+The Node.js demo and browser smoke use fictional inputs. The included Azure SDK packages support selected identity, secret and storage boundaries; installing them does not grant access to Azure.
+
 ## Step by Step
 
-1. **Prepare the worker** — Start with the report-processing code, tests and recorded software dependencies. Use a Dockerfile to describe how those pieces become a runnable image.
-2. **Build and check the image** — Build the selected version and test its browser and worker behavior with fictional inputs. Review the security findings before considering that image for release.
-3. **Store and select the version** — Push the accepted image to the registry and identify it by its digest, a fingerprint of the registry manifest. Update the job's image only after checking the intended release and preserved settings.
-4. **Run and observe it** — Start or schedule work separately from publishing the image. Check the execution and import records, and keep a reviewed previous image for recovery.
+1. **Prepare the worker (Node.js)** — Start with the report-processing code, tests and recorded software dependencies. Use a Dockerfile to describe how those pieces become a runnable image.
+2. **Build and check the image (Docker and Playwright)** — Build the selected version and test its browser and worker behavior with fictional inputs. Review the security findings before considering that image for release.
+3. **Store and select the version (Azure Container Registry)** — Push the accepted image to the registry and identify it by its digest, a fingerprint of the registry manifest. Update the job's image only after checking the intended release and preserved settings.
+4. **Run and observe it (Container Apps Jobs)** — Start or schedule work separately from publishing the image. Check the execution and import records, and keep a reviewed previous image for recovery.
 
 ## Architecture
 
