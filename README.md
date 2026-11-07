@@ -71,8 +71,8 @@ The deployed CareBridge job is defined through ARM templates. The root Terraform
 <summary>For engineers: run the local examples</summary>
 
 ```bash
-git clone https://github.com/truthofsource/azure-container-lifecycle-carebridge.git
-cd azure-container-lifecycle-carebridge
+git clone https://github.com/truthofsource/azure-container-lifecycle.git
+cd azure-container-lifecycle
 npm test
 npm run demo
 python -B -m unittest discover -s scripts -p 'test_*.py' -v
