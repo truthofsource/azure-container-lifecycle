@@ -97,6 +97,10 @@ These selected tests need Node and Python, but no Azure account. [Commands](docs
 
 For higher report volume, measure browser startup, export waits, memory, provider limits and processing time before adding parallel workers. Keep shared sign-in and work ownership controls intact. [Operations, scaling and costs](docs/OPERATIONS-AND-SCALING.md).
 
+## Troubleshooting Lessons
+
+Docker’s Linux engine could work while x64 browser or SQL workloads crashed under ARM emulation. Native-runtime verification remained separate from installation and build success. [Read the incident, evidence and verification](docs/LESSONS-LEARNED.md).
+
 ## Guides
 
 - [The full lifecycle](docs/LIFECYCLE.md)

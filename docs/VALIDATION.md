@@ -19,3 +19,9 @@ The root browser check is a fictional static page. The original production smoke
 The image-selection examples do not verify a real signature or establish original build provenance. Those are separate parts of the platform's reviewed release process. No provider sign-in, report download, paid message, employee action, cloud start or hosted Actions dispatch occurred for this project.
 
 Selected unit tests passed once. They are repeated only if a related code change or failure needs verification; historical platform results are not relabelled as a new public deployment.
+
+## Troubleshooting documentation review — November 7, 2026
+
+Added a README incident summary and a linked historical lessons guide, checking the account against the maintained source records. Documentation checks covered local links, complete incident fields, identifying-information patterns, whitespace and preservation of the existing four-step walkthrough. Shared incidents link to the relevant project details; unresolved causes remain explicit.
+
+This was an editorial update. Application code, tests, Terraform, images, workflow definitions and cloud settings were not changed. Existing functional test counts and screenshots above retain their original scope and dates; no application suite, live scan, paid image request, recovery rehearsal or GitHub Actions run was executed for this documentation pass.
