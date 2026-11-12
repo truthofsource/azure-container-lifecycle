@@ -10,9 +10,11 @@
 
 ## The Business Problem
 
-The platform needs a browser-based worker to retrieve CareBridge reports. Its code, browser and supporting software must fit together, and the version tested must be the version selected for deployment.
+The platform relies on an external-service worker to bring appointment, visit and other operational reports into the application. That worker needs its code, browser and supporting libraries to work together. A packaging or runtime mismatch can stop imports and leave staff looking at older information.
 
-A successful image build also does not prove a successful import. The team needs to distinguish building, storing, deploying, starting and completing useful work.
+The operating team also needs to distinguish several outcomes: an image was built, it passed the selected checks, it was stored in the registry, a job selected it and a real import completed. Treating any one of those as proof of the others makes failed releases harder to diagnose and can leave the actual running version unclear.
+
+The business need was a traceable path from source code to a selected worker image and its runtime result, with provider access and import activation controlled separately.
 
 ## The Solution
 
