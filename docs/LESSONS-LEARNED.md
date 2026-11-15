@@ -16,7 +16,7 @@ Source record: `docs/troubleshooting/profile-photos-and-security-scans.md — Lo
 
 ## Related incident
 
-[Remote script completion evidence](https://github.com/truthofsource/platform-operations-and-recovery/blob/main/docs/LESSONS-LEARNED.md) explains the shared failure and verification. Its historical acceptance is not another hosted test performed for this repository.
+[Remote script completion evidence](https://github.com/truthofsource/azure-backup-and-recovery/blob/main/examples/operational-recovery/docs/LESSONS-LEARNED.md) explains the shared failure and verification. Its historical acceptance is not another hosted test performed for this repository.
 
 ## Evidence and project boundaries
 

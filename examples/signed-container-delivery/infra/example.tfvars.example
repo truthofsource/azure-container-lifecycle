@@ -1,0 +1,6 @@
+subscription_id = "<your-subscription-id>"
+resource_group_name = "rg-example-delivery"
+storage_account_name = "<globally-unique-archive-account>"
+registry_name = "<globally-unique-registry-name>"
+repository_name = "platform/app"
+enable_publisher = false

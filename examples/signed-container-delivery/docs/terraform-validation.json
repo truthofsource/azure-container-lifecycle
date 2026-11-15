@@ -1,0 +1,10 @@
+{
+  "project": "secure-container-delivery-and-rollback",
+  "executed_at_utc": "2026-11-06T15:11:46.963619+00:00",
+  "applied": false,
+  "init": "passed",
+  "format": "passed",
+  "validate": "passed",
+  "mock_tests": "passed",
+  "mock_tests_passed": 2
+}

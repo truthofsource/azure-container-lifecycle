@@ -1,0 +1,21 @@
+{
+  "title": "DevSecOps Delivery & Verified Rollback",
+  "domain": "DEVSECOPS / CONTAINERS / CI/CD",
+  "subtitle": "Build once, inspect the selected artifact, promote the same bytes.",
+  "scenario": "An operational application had several deployment targets and security scanners. A green build alone did not establish which source, package and container digest would reach production or what could be restored after a bad release.",
+  "outcome": "Make releases traceable and recovery deliberate, with fewer rebuild differences and clear failure evidence before publication.",
+  "flow": [
+    "Select reviewed source",
+    "Build and scan the candidate",
+    "Record source, digest and policy evidence",
+    "Promote the identical retained artifact",
+    "Restore a verified prior release if needed"
+  ],
+  "notes": [
+    "Actual platform source and original offline tests are included under reference/; see implementation and source-map guides.",
+    "The local receipt is a trusted test fixture, not a signed scanner attestation.",
+    "This reference proves artifact/policy mechanics locally. Azure publication and original-build image provenance require separate acceptance.",
+    "Source findings, container findings and live configuration findings are tracked separately; remaining findings are not silently suppressed."
+  ],
+  "boundary": "Platform-derived local demonstration with fictional data; extracted source/tests are separately reproducible. No fresh cloud acceptance."
+}

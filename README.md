@@ -337,3 +337,11 @@ Docker’s Linux engine could work while x64 browser or SQL workloads crashed un
 - [Observed validation and limits](docs/VALIDATION.md)
 
 This project publishes no image, starts no cloud service and performs no provider sign-in or import. Its GitHub check is manual-only, with an optional container build; no Actions run was dispatched to publish it.
+
+## Consolidated Examples
+
+These related implementations are now maintained here:
+
+- [secure-container-delivery-and-rollback](examples/signed-container-delivery/README.md)
+
+See [the consolidation guide](docs/CONSOLIDATION.md) for component scope, preserved tests and historical evidence.

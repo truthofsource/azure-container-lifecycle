@@ -1,0 +1,212 @@
+{
+  "source_repository": "secure-container-delivery-and-rollback",
+  "source_commit": "095187e9df0fd1e00604dcfa116e7001ac14f309",
+  "destination": "azure-container-lifecycle",
+  "copied_files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "d5a6f65b6269cc62a674f2c0fc0a80e0558f77e80110d8e0895708ab8c8bde18"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "84a5ff4d6005f5f7dceb0d075394fbb899a8bf62f8546850c9da1d4825d7a5d7"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "b3f9b88968ea760519be9adf8a39446d8bd68557293b757b7d44dde61500fa86"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "f416274a96683c852acf291718b136042ddc7c44a44737cd09cf2883b8b88652"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "5b048b72ab04dbe09c9bd57c6135778a46cf63c3d5ee3217d679cc661a63b9da"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "1671e11d0985edd660b3f6c623c37205372ee71f860aed66beb74d766bd96f70"
+    },
+    {
+      "path": "README.md",
+      "sha256": "15cb51ba30d2cda71336ef90ebe50a5462f44d1521a3e2bdf74667d730e33d2b"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "eda970506f87e8b56fea017ceba8748082451756f2145785aa76d64c1606063b"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "32ede35b4a470870fca212b76d1951b80ed05002f55123e19b3e3429aa9ef1ce"
+    },
+    {
+      "path": "docs/BUILD-YOUR-OWN.md",
+      "sha256": "d81fc1e3bb2e1354a058c04a0f35c69c4952bd30aa250191e1cb5159de1b9263"
+    },
+    {
+      "path": "docs/COMMANDS.md",
+      "sha256": "0cfc008079699cd1c5fc870c3fea38acb91c9b1de39396710277ae6aa4e6cac6"
+    },
+    {
+      "path": "docs/IMPLEMENTATION.md",
+      "sha256": "5537cfc3c42a9d8f957a42d77e87c6397cf5b4aa3ee32f305873e3c82c5c547b"
+    },
+    {
+      "path": "docs/LESSONS-LEARNED.md",
+      "sha256": "bffeb7fef7be27ca613bdb739289e80862b7bbc63a9bbc46f52f7d32cc768ab6"
+    },
+    {
+      "path": "docs/OPERATIONS.md",
+      "sha256": "f46926e190b36c17fb111d48beb4a8c6d3aebc0b2dbbd553b5a2e514121c8ddf"
+    },
+    {
+      "path": "docs/REFERENCES.md",
+      "sha256": "bf77ec6885fd53c53f457b8a224e890faf6a69bd7cb73e2cea4288f98b9319d7"
+    },
+    {
+      "path": "docs/SCALING.md",
+      "sha256": "5284595c781923eb60560cb732f411776a18bdd1dbf7f7fc75500cf932e659b9"
+    },
+    {
+      "path": "docs/SCANNERS.md",
+      "sha256": "83939c4cf02f03785501b160fd3c75510fd2def2740ea0500f4926d7cba50d01"
+    },
+    {
+      "path": "docs/SOURCE-MAP.md",
+      "sha256": "2ffdb3f42930707765a95f8c278975384d7ec83f518023a291b4f19499e1c3f8"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "sha256": "f9768712f059bd54ad8d412966d3e3d0ea21311f25ca5af7d8afc425dbd59b0a"
+    },
+    {
+      "path": "docs/WALKTHROUGH.md",
+      "sha256": "3d3556675768488c74153eea1264f3aa2ca1997144fbdae3a040d4019d22fee8"
+    },
+    {
+      "path": "docs/images/01-overview.png",
+      "sha256": "8dd8f87d5bb52770269a43f2a3f76cb58359eaa018f8037b9357e43e5c18c91d"
+    },
+    {
+      "path": "docs/images/02-validation.png",
+      "sha256": "0de5a368b12015f7445b5a1a62d3cc314e0dc87aac853dda79220c51f44c675d"
+    },
+    {
+      "path": "docs/images/03-mobile.png",
+      "sha256": "08e8086726fc44c31c2703e092609fbb9af979ca87ecd904eafc5e6736a4047d"
+    },
+    {
+      "path": "docs/source-map.json",
+      "sha256": "669198538155a546b3550e80aa89052311266dabff43e3c9338462d1158aba0e"
+    },
+    {
+      "path": "docs/terraform-validation.json",
+      "sha256": "d589dd1029da9cbedef5ffa1f823c8b3d21588f8b6f4dd0afd95597565e25386"
+    },
+    {
+      "path": "docs/validation-results.json",
+      "sha256": "11fd3eb64c9451eb990f63f78c19e13284f43f93d8d74bd126d5e79c0ab49fc5"
+    },
+    {
+      "path": "infra/.terraform.lock.hcl",
+      "sha256": "1709d4d39725ff3c0803dc95d2420205bc574aa6210093a3f68d238f1fb0eb95"
+    },
+    {
+      "path": "infra/README.md",
+      "sha256": "51f07aa322232b2ff1fa70356f89cc57c2ddfb37b7a93806e751c171bd8e9227"
+    },
+    {
+      "path": "infra/example.tfvars.example",
+      "sha256": "290f750af7862da9d07332c505708d7453d921df6856effe3f1dead98950e324"
+    },
+    {
+      "path": "infra/main.tf",
+      "sha256": "813136063e3f77757e01c194c0160c740a34a3c194988c9795298d4f3f6aa274"
+    },
+    {
+      "path": "infra/registry.tf",
+      "sha256": "18a872052fd7112c23c9f8e437a05f8796eb97a1e83a340275897fdadd4c63d8"
+    },
+    {
+      "path": "infra/storage.tf",
+      "sha256": "5668f6e449c951280779d792a995142e24adfddc79a97cc162accac789139798"
+    },
+    {
+      "path": "infra/tests/delivery.tftest.hcl",
+      "sha256": "b24dda162b3c75fcb5be30cc3c4476d2854e0804fb3515c64c3db93520ef0797"
+    },
+    {
+      "path": "infra/variables.tf",
+      "sha256": "a03c8b6badd7189bbd97f966d9d912f82fc44ec9b03cea6f8b9ab200d933537d"
+    },
+    {
+      "path": "infra/versions.tf",
+      "sha256": "6e19cb79e0f8773cd48ae7d5091af221f39ce604ebb82fd74d375a42172daf45"
+    },
+    {
+      "path": "lab/__init__.py",
+      "sha256": "95a8296d613b692bb13af925e90204c901108a2c30dfd3ffd4d0fadca55cb5f9"
+    },
+    {
+      "path": "lab/__main__.py",
+      "sha256": "d528e758b251fa9f3bf42a326d8644a7055bcd1884112579e88981f33dcbba13"
+    },
+    {
+      "path": "lab/demo.py",
+      "sha256": "1ee90686323e9ae6b91bddf1dd303e8c90c5121078f1e27634479fd3381d82bb"
+    },
+    {
+      "path": "lab/domain.py",
+      "sha256": "66fb77aab54d2a48e990df663a67a21b59467c9769d14904cac96ab3ff32d066"
+    },
+    {
+      "path": "lab/project.json",
+      "sha256": "1e1c2f9e1cb990d4c9dac58de0f136f423f1676c02a49a999f34462fa76d17c9"
+    },
+    {
+      "path": "lab/web/app.js",
+      "sha256": "9ec0cd0243a7ef57de9bbc9433a2929a59d553fbcd24eb800c82eed1e3eacb83"
+    },
+    {
+      "path": "lab/web/index.html",
+      "sha256": "47addf14562fe5425bbb5bf82a8e1638c479dcda35bd572a39e9be7c200894ec"
+    },
+    {
+      "path": "lab/web/style.css",
+      "sha256": "96088c1d4d75dbe0d0c5a0d3d214ce19dbff4d9a7956f47071885b10cf40fd12"
+    },
+    {
+      "path": "lab/workbench.py",
+      "sha256": "cc2889350fd182e10a74b1153e2c96ef93d5c295724f0ae281d757d1a2e546b5"
+    },
+    {
+      "path": "reference/README.md",
+      "sha256": "420d3d2498bdb6ce1187b09b454b9ee3dd5da76f40f79178a8f5814a12f3b4de"
+    },
+    {
+      "path": "reference/__init__.py",
+      "sha256": "cb7a7b9fc05c83b7f2ef0e12fe4ae2d6a00ce9c4ab9c95a8535aaf798d8be721"
+    },
+    {
+      "path": "reference/rollback_release.py",
+      "sha256": "21155cd41342dfb3641a78bc6d3af0b5376711da04a6643f12a6b63ef079e423"
+    },
+    {
+      "path": "reference/test_rollback_release.py",
+      "sha256": "c8e6494bce3e5d56083aec9ce5a7895af34ae110c91aa2fa30ab83a5d8c5b897"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "b1e521c164fe482d939b2ccfd8c71fe5bd135822aab4e4e3f8015a44898fa640"
+    },
+    {
+      "path": "tests/test_demo.py",
+      "sha256": "899f16f01189add1d88283cb779d2059f8c3f1e00004b0624354c7aa1a93a9d6"
+    },
+    {
+      "path": "tests/test_domain.py",
+      "sha256": "32219b50829ad0f640567c53074cfa07fbc239048b5c449ad33cddd480c54510"
+    }
+  ],
+  "note": "Source snapshot retained; internal links and location guidance updated separately."
+}

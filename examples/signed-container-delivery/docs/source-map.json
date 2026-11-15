@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "reviewedDate": "2026-11-06",
+  "files": [
+    {
+      "source": "scripts/rollback_release.py",
+      "sourceSha256": "2e859aa9ecec7251a9d02c5f53a924959b7813f5120c8c3ee6882f57a6afa3ba",
+      "publicFile": "reference/rollback_release.py",
+      "changes": "Actual offline functions; omit repository-file hash adapter and unused native-reviewer branch; historical schema-168 contract retained"
+    },
+    {
+      "source": "scripts/test_rollback_release.py",
+      "sourceSha256": "4663cc08e317b4ab633d84747ab1cc06856594fe124524e14b349a8f5883a8b7",
+      "publicFile": "reference/test_rollback_release.py",
+      "changes": "Retain 12 original offline tests; omit native-reviewer, live operations, repo inventory and SQL-helper integration cases"
+    }
+  ],
+  "relatedAdaptations": [
+    {
+      "source": "scripts/release_promotion_candidate.py",
+      "sourceSha256": "0ffdbb7471cb01ca76a50762140c16b6356d7c534619846db40efed61ef13170",
+      "publicFile": "lab/domain.py",
+      "relationship": "Parameterized reference adaptation, not a byte-identical copy or live deployment"
+    }
+  ]
+}
