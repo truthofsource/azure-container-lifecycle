@@ -41,10 +41,25 @@ The Node.js demo and browser smoke use fictional inputs. The included Azure SDK 
 
 ## Step by Step
 
+Build an independent version with the [reader-operated walkthrough](docs/BUILD-YOUR-OWN.md). It gives prerequisites, working locations, numbered actions, source-derived commands, expected results, verification and cleanup.
+
+For this project, your working starting point is [`src/import-cycle.mjs`](src/import-cycle.mjs). Expected scope: A worker/journal demonstration; a Linux image build and live provider execution need separate evidence.
+
+1. **Create your own workspace.** Copy the project and record the source version before editing.
+2. **Prepare and run the baseline.** Use the documented runtimes and selected dependencies, then run the local checks.
+3. **Make your own change.** Edit a project-specific fixture, configuration or rule and rerun its positive and negative cases.
+4. **Verify and document your result.** Capture your own evidence and distinguish a local example from a live integration.
+5. **Extend and close out deliberately.** Plan any independent cloud work separately and clean up only what you created.
+
+<details>
+<summary>How the underlying platform process works</summary>
+
 1. **Prepare the worker (Node.js)** — Start with the report-processing code, tests and recorded software dependencies. Use a Dockerfile to describe how those pieces become a runnable image.
 2. **Build and check the image (Docker and Playwright)** — Build the selected version and test its browser and worker behavior with fictional inputs. Review the security findings before considering that image for release.
 3. **Store and select the version (Azure Container Registry)** — Push the accepted image to the registry and identify it by its digest, a fingerprint of the registry manifest. Update the job's image only after checking the intended release and preserved settings.
 4. **Run and observe it (Container Apps Jobs)** — Start or schedule work separately from publishing the image. Check the execution and import records, and keep a reviewed previous image for recovery.
+
+</details>
 
 ## Architecture
 
