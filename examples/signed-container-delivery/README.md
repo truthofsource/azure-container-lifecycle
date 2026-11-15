@@ -27,7 +27,7 @@ Build once, keep the tested package and its fingerprint, and check the matching 
 - Integrated dependency, container, IaC and secret scanning with dated findings, package inventories and remediation evidence; separated report generation from release authorization.
 - Patched vulnerable dependencies using compatible versions and tests that existing callers still work, retaining unresolved findings rather than claiming a clean estate.
 
-This case study draws on a workforce/operations platform I designed and implemented. Organization details and records are excluded. The public code makes selected patterns reproducible; the screenshots show a working local demonstration with fictional data. [Validation scope](docs/VALIDATION.md) separates that evidence from testing against the actual cloud service.
+This case study draws on a workforce/operations platform I designed and implemented. Organization details and records are excluded. The public code makes selected patterns reproducible; the local demonstration uses fictional data, and its placeholder screenshots have been removed. [Validation scope](docs/VALIDATION.md) separates that evidence from testing against the actual cloud service.
 
 ### Actual implementation code
 
@@ -341,7 +341,7 @@ docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-
 
 ### 4. Visible results
 
-The dashboard runs the same domain code as the CLI. Desktop/mobile rendering, all three tabs, rerunning the demonstration, cross-origin write rejection and unlisted-file rejection were checked. The screenshots are captured from those runs.
+The dashboard runs the same domain code as the CLI. Desktop/mobile rendering, all three tabs, rerunning the demonstration, cross-origin write rejection and unlisted-file rejection were checked. Those local test results remain documented; proper application screenshots are deferred.
 
 Expected access denials are successful negative tests. Cloud permissions, network connectivity and provider integrations need their own acceptance evidence.
 
