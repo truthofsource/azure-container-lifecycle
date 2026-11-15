@@ -1,12 +1,14 @@
 # Container Lifecycle on Azure: the CareBridge Worker
 
+[![Container worker lifecycle — illustrated overview](docs/diagrams/architecture.png)](docs/diagrams/architecture.svg)
+
+[View SVG](docs/diagrams/architecture.svg) · [Download PNG](docs/diagrams/architecture.png) · [Edit in draw.io](docs/diagrams/architecture.drawio)
+
 **Follow a report worker from its source code and Dockerfile to a tested image, registry storage and deployment.**
 
 **What the worker does:** A Node.js worker uses **Playwright to control Chromium**, retrieve CareBridge reports about clients, service authorizations, appointments and visits, and submit them to the application for import. It manages the saved sign-in, checks for repeated files and records the results so staff can monitor the process.
 
 [Business problem](#the-business-problem) · [Step by step](#step-by-step) · [What was built](#what-was-built) · [Proof](#proof-it-works) · [Commands](docs/COMMANDS.md)
-
-![Local container-lifecycle reference](docs/images/01-lifecycle.png)
 
 ## The Business Problem
 
@@ -226,7 +228,7 @@ Keep source, lockfile, image digest, scan result and execution status together. 
 | Failure boundary | A meaningful denied, malformed, stale or failed case | Not yet recorded |
 | Recovery / cleanup | What you restored or removed and what remains billed | Not yet recorded |
 
-Capture your own architecture/configuration, one working result and one failure/recovery result. Keep tokens, credentials, personal records and private identifiers out of public screenshots. Existing portfolio images are references, not evidence that you performed these steps.
+Capture your own architecture/configuration, one working result and one failure/recovery result. Keep tokens, credentials, personal records and private identifiers out of public screenshots. The architecture diagram explains the design; record your own results rather than treating it as execution evidence.
 
 ### Troubleshooting order
 
@@ -258,18 +260,7 @@ The walkthrough layout follows the prerequisites → creation/configuration → 
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  Code[Worker code and tests] --> Recipe[Dockerfile and locked dependencies]
-  Recipe --> Build[Build Linux image]
-  Build --> Check[Local checks and security review]
-  Check --> Registry[Azure Container Registry]
-  Registry --> Select[Select exact image digest]
-  Select --> Job[Container Apps Job configuration]
-  Job --> Run[Separate job execution]
-  Run --> Outcome[Logs and import records]
-  Registry --> Previous[Retained previous image]
-```
+[View the illustrated project overview](docs/diagrams/architecture.svg).
 
 The deployed CareBridge job is defined through ARM templates. The root Terraform folder here is a **new, default-Off teaching example**, not a claim that it owns the production job or should replace its state.
 
@@ -292,9 +283,6 @@ The deployed CareBridge job is defined through ARM templates. The root Terraform
 - The [validation record](docs/VALIDATION.md) distinguishes local browser checks, simulated infrastructure tests and checks that still need a Linux Docker engine.
 
 **A fresh container build and live deployment were not performed.** The Docker CLI is installed, but its Linux engine was unreachable during preparation; local Node tests are not presented as container acceptance. The public image runs a fictional demonstration, while the production reference uses the real worker entrypoint.
-
-![Dockerfile explanation in the local reference](docs/images/02-recipe.png)
-![Local validation and deployment boundaries](docs/images/03-checks.png)
 
 <details>
 <summary>For engineers: run the local examples</summary>

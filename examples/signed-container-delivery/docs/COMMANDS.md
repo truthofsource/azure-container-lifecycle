@@ -111,7 +111,6 @@ trivy image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 --format json
 
 Save scanner/database versions and the exact image ID with any result. An image build or smoke does not establish zero vulnerabilities. Do not treat a missing report as success. Broader scanner roles and limits are explained in [the scanner guide](SCANNERS.md).
 
-
 ## Troubleshooting and cleanup
 
 If imports fail, confirm that the command uses the virtual environment's Python. If port 8011 is occupied, choose an available port with `--port` and open the corresponding `127.0.0.1` URL. If Docker's CLI is installed but the engine is unreachable, start/check the Linux engine rather than reinstalling the application.

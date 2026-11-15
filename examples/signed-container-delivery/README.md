@@ -6,8 +6,6 @@
 
 [The problem](#the-business-problem) · [The solution](#the-solution) · [What was built](#what-was-built) · [Proof it works](#proof-it-works) · [Run it](#run-it-locally) · [Step by step](#step-by-step)
 
-![Overview of the working demonstration](docs/images/01-overview.png)
-
 ## The Business Problem
 
 The platform supports onboarding, timesheets, employee documents and payroll-related work. A release that behaves differently from the version tested can disrupt those services even when the build itself succeeded. Rebuilding at the final deployment step makes it harder to establish exactly which files staff are using.
@@ -229,7 +227,7 @@ If automating, separate build/sign/publish from release selection, use workload 
 | Failure boundary | A meaningful denied, malformed, stale or failed case | Not yet recorded |
 | Recovery / cleanup | What you restored or removed and what remains billed | Not yet recorded |
 
-Capture your own architecture/configuration, one working result and one failure/recovery result. Keep tokens, credentials, personal records and private identifiers out of public screenshots. Existing portfolio images are references, not evidence that you performed these steps.
+Capture your own architecture/configuration, one working result and one failure/recovery result. Keep tokens, credentials, personal records and private identifiers out of public screenshots. The architecture diagram explains the design; record your own results rather than treating it as execution evidence.
 
 ### Troubleshooting order
 
@@ -266,18 +264,17 @@ A short walkthrough of the process, with technical instructions and evidence lim
 
 ## Architecture
 
-```mermaid
-flowchart LR
-  Source[Reviewed commit] --> Build[Build and test]
-  Build --> Scan[Dependency / image / IaC / secret scans]
-  Scan --> Gate[Trusted policy gate]
-  Build --> Archive[(Retained ZIP / digest)]
-  Gate --> Select[Exact source and artifact selection]
-  Archive --> Select
-  Select --> NP[Nonproduction verification]
-  NP --> Prod[Same bytes to production]
-  Archive --> Rollback[Retained previous release]
-```
+1. **Reviewed commit** → **Build and test**.
+2. **Build and test** → **Dependency / image / IaC / secret scans**.
+3. **Dependency / image / IaC / secret scans** → **Trusted policy gate**.
+4. **Build and test** → **Retained ZIP / digest**.
+5. **Trusted policy gate** → **Exact source and artifact selection**.
+6. **Retained ZIP / digest** → **Exact source and artifact selection**.
+7. **Exact source and artifact selection** → **Nonproduction verification**.
+8. **Nonproduction verification** → **Same bytes to production**.
+9. **Retained ZIP / digest** → **Retained previous release**.
+
+[View the illustrated project overview](../../docs/diagrams/architecture.svg).
 
 ## What Was Built
 
@@ -300,7 +297,6 @@ python -B -m unittest discover -s reference -v
 ```
 
 The selected original tests run offline. [Validation](docs/VALIDATION.md) records current counts and distinguishes them from historical hosted evidence.
-
 
 **Current local checks:** 12 extracted-source tests + 12 portable tests passed · 6 demonstration checks · 2 Terraform tests using simulated cloud responses.
 
@@ -346,8 +342,6 @@ docker run --rm --network none --read-only --cap-drop ALL --security-opt no-new-
 ### 4. Visible results
 
 The dashboard runs the same domain code as the CLI. Desktop/mobile rendering, all three tabs, rerunning the demonstration, cross-origin write rejection and unlisted-file rejection were checked. The screenshots are captured from those runs.
-
-![Positive and negative checks from the running demonstration](docs/images/02-validation.png)
 
 Expected access denials are successful negative tests. Cloud permissions, network connectivity and provider integrations need their own acceptance evidence.
 
@@ -429,7 +423,6 @@ Moving tests to another runner did not fix exhausted artifact storage. Recovery 
 ## Repository Map
 
 `reference/` contains extracted implementation logic and original selected tests.
-
 
 ```text
 infra/               Terraform source, example inputs and mock plan tests

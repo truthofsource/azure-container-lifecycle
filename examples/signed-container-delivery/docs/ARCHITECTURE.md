@@ -13,18 +13,17 @@ An operational application had several deployment targets and security scanners.
 
 ## Processing path
 
-```mermaid
-flowchart TD
-  Source[Reviewed commit] --> Build[Build and test]
-  Build --> Scan[Dependency / image / IaC / secret scans]
-  Scan --> Gate[Trusted policy gate]
-  Build --> Archive[(Retained ZIP / digest)]
-  Gate --> Select[Exact source and artifact selection]
-  Archive --> Select
-  Select --> NP[Nonproduction verification]
-  NP --> Prod[Same bytes to production]
-  Archive --> Rollback[Retained previous release]
-```
+1. **Reviewed commit** → **Build and test**.
+2. **Build and test** → **Dependency / image / IaC / secret scans**.
+3. **Dependency / image / IaC / secret scans** → **Trusted policy gate**.
+4. **Build and test** → **Retained ZIP / digest**.
+5. **Trusted policy gate** → **Exact source and artifact selection**.
+6. **Retained ZIP / digest** → **Exact source and artifact selection**.
+7. **Exact source and artifact selection** → **Nonproduction verification**.
+8. **Nonproduction verification** → **Same bytes to production**.
+9. **Retained ZIP / digest** → **Retained previous release**.
+
+[View the illustrated project overview](../../../docs/diagrams/architecture.svg).
 
 ## Portable reference boundary
 
