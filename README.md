@@ -41,7 +41,7 @@ The Node.js demo and browser smoke use fictional inputs. The included Azure SDK 
 
 ## Step by Step
 
-Build an independent version with the [reader-operated walkthrough](docs/BUILD-YOUR-OWN.md). It gives prerequisites, working locations, numbered actions, source-derived commands, expected results, verification and cleanup.
+Build an independent version with the [step-by-step build guide](docs/BUILD-YOUR-OWN.md). It gives prerequisites, working locations, numbered actions, source-derived commands, expected results, verification and cleanup.
 
 For this project, your working starting point is [`src/import-cycle.mjs`](src/import-cycle.mjs). Expected scope: A worker/journal demonstration; a Linux image build and live provider execution need separate evidence.
 
