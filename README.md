@@ -125,7 +125,7 @@ try {
 
 **Where:** Your project folder.
 
-Create Dockerfile below. The build installs the browsers matching the npm package and its Linux libraries; the final process runs as a non-root user.
+Create Dockerfile below. The build installs the browsers matching the npm package and its Linux libraries; the final process runs as a non-root user. Create the accompanying .dockerignore before building: .gitignore does not restrict the Docker context, and only the listed runtime files are allowed into this example's context.
 
 Create **`Dockerfile`** with the following contents:
 
@@ -139,6 +139,16 @@ COPY worker.mjs ./
 RUN mkdir -p /work/out && chown node:node /work/out
 USER node
 CMD ["node", "worker.mjs"]
+```
+
+Create **`.dockerignore`** with the following contents:
+
+```dockerignore
+**
+!Dockerfile
+!package.json
+!package-lock.json
+!worker.mjs
 ```
 
 **Check before continuing:** The image recipe includes both the Playwright package and its browser/system dependencies.
@@ -162,14 +172,23 @@ cat out/rows.json
 
 **Where:** Azure Portal → Container registries; then your terminal.
 
-Create an ACR with admin access disabled, sign in through your authorized Entra identity and push your image. Record the resulting repository digest, then scan that exact artifact before selecting it for a job.
+Create an ACR with admin access disabled and use the actual loginServer returned by Azure rather than guessing its DNS name. Push the image and form WORKER_IMAGE from that server plus the returned digest, which already includes sha256:; retain that complete reference for the manual job. Run the Bash block in a dedicated terminal; it stops on a failed registry lookup or malformed digest instead of printing an unusable release reference.
 
 ```bash
+set -euo pipefail
 az login
-az acr login --name YOUR_REGISTRY
-docker tag my-browser-worker:lab YOUR_REGISTRY.azurecr.io/my-browser-worker:lab
-docker push YOUR_REGISTRY.azurecr.io/my-browser-worker:lab
-az acr repository show --name YOUR_REGISTRY --image my-browser-worker:lab --query digest -o tsv
+export REGISTRY_NAME="YOUR_REGISTRY_RESOURCE_NAME"
+REGISTRY_SERVER="$(az acr show --name "$REGISTRY_NAME" --query loginServer -o tsv)"
+export REGISTRY_SERVER
+[[ "$REGISTRY_SERVER" =~ ^[A-Za-z0-9.-]+$ ]] || { echo 'Registry lookup did not return a valid host' >&2; exit 1; }
+az acr login --name "$REGISTRY_NAME"
+docker tag my-browser-worker:lab "$REGISTRY_SERVER/my-browser-worker:lab"
+docker push "$REGISTRY_SERVER/my-browser-worker:lab"
+IMAGE_DIGEST="$(az acr repository show --name "$REGISTRY_NAME" --image my-browser-worker:lab --query digest -o tsv)"
+export IMAGE_DIGEST
+[[ "$IMAGE_DIGEST" =~ ^sha256:[0-9a-fA-F]{64}$ ]] || { echo 'Missing or malformed image digest' >&2; exit 1; }
+export WORKER_IMAGE="$REGISTRY_SERVER/my-browser-worker@$IMAGE_DIGEST"
+printf '%s\n' "$WORKER_IMAGE"
 ```
 
 **Check before continuing:** Your registry contains the selected image and you have its immutable digest.
@@ -178,7 +197,7 @@ az acr repository show --name YOUR_REGISTRY --image my-browser-worker:lab --quer
 
 **Where:** Azure Portal → Container Apps Jobs → Create.
 
-Choose a new environment, Manual trigger and your reviewed ACR image digest. Configure a managed identity with pull access for the selected registry, bounded timeout, zero automatic retries and suitable CPU/memory; provider credentials are not needed by this example.
+Choose a new environment, Manual trigger and your reviewed ACR image digest. Configure a managed identity with pull access for the selected registry, bounded timeout, zero automatic retries and suitable CPU/memory; provider credentials are not needed by this example. Copy the complete WORKER_IMAGE value from the previous step; do not prepend another sha256: to it.
 
 **Check before continuing:** The job references your digest and is not enabled on a recurring schedule.
 
@@ -223,6 +242,7 @@ The numbered steps describe a build procedure. Local syntax checks, an accepted 
 - [playwright.dev — docker](https://playwright.dev/docs/docker)
 - [learn.microsoft.com — jobs](https://learn.microsoft.com/en-us/azure/container-apps/jobs)
 - [learn.microsoft.com — container-registry-authentication-managed-identity](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication-managed-identity)
+- [docs.docker.com — #dockerignore-files](https://docs.docker.com/build/concepts/context/#dockerignore-files)
 
 The walkthrough layout follows the prerequisites → creation/configuration → test → verification → troubleshooting → cleanup pattern of the [Splunk project reference](https://github.com/davidharris6/splunk-siem-log-analysis). Its Splunk-specific settings are not copied into unrelated projects.
 
